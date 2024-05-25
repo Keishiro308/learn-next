@@ -18,6 +18,9 @@ const Page: NextPage = () => {
     <div>
       <Text>Text</Text>
       <BorderedText>Bordered Text</BorderedText>
+      <Text as="a" href="/">
+        Go to index
+      </Text>
     </div>
   )
 }
