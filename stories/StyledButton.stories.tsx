@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import { StyledButton } from '../components/StyledButton';
 import { action } from '@storybook/addon-actions';
 import React, { useState } from 'react';
@@ -6,8 +6,29 @@ import React, { useState } from 'react';
 export default {
   title: 'StyledButton',
   component: StyledButton,
-  // argTypes: { onClick: { action: 'clicked' } },
+  argTypes: {
+    // onClick: { action: 'clicked' },
+    variant: {
+      control: {
+        type: 'radio',
+      },
+      options: ['primary', 'success', 'transparent']
+    },
+    children: {
+      control: {
+        type: 'text'
+      }
+    }
+  },
 } as Meta<typeof StyledButton>;
+
+const Template: StoryFn<typeof StyledButton> = (args: any) => <StyledButton {...args} />;
+export const TemplateTest = Template.bind({});
+
+TemplateTest.args = {
+  variant: 'primary',
+  children: 'Primary'
+}
 
 const incrementAction = action('increment');
 
